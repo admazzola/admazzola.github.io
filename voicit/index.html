@@ -1,17 +1,12 @@
+<!doctype html>
+<head>
+  <title>Voicit</title> 
+<script src="js/voicit.js"></script>
+</head>
 
-function playVoice(string)
-{
-
-  var msg = new SpeechSynthesisUtterance( string );
-  window.speechSynthesis.speak(msg);
-  console.log( string );
-}
+<body>
+Hello World
 
 
-function init()
-  {
-    setInterval(function () { playVoice("voice it") }  , 3000);
-
-  }
-
-  window.onload=init;
+<input onclick="responsiveVoice.speak('Hello World');" type="button" value="Play" />
+</body>
