@@ -1,12 +1,17 @@
-//requires ResponsiveVoice.js
-
-
-setInterval( playVoice("hello") , 3000);
-
 
 function playVoice(string)
 {
 
-responsiveVoice.speak(“Hello World”);
-
+  var msg = new SpeechSynthesisUtterance( string );
+  window.speechSynthesis.speak(msg);
+  console.log( string );
 }
+
+
+function init()
+  {
+    setInterval(function () { playVoice("voice it") }  , 3000);
+
+  }
+
+  window.onload=init;
