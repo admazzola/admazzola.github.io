@@ -1,16 +1,36 @@
 
+
 function playVoice(string)
 {
+
+
 
   var msg = new SpeechSynthesisUtterance( string );
   window.speechSynthesis.speak(msg);
   console.log( string );
+
+
 }
 
+var postIndex = 0;
+var posts;
+
+function readNextPost()
+{
+  console.log(posts);
+  if(typeof posts[postIndex] !== 'undefined' && posts[postIndex] !== null)
+  {
+    currentPost = posts[postIndex].data;
+    playVoice( currentPost.title );
+
+    postIndex++;
+  }
+
+}
 function test()
 {
 
-   
+
 
   var url = "http://reddit.com/r/all.json?jsonp=?";
  $.getJSON( url, {
@@ -18,24 +38,27 @@ function test()
    crossDomain: true,
    format: "json"
  })
-   .done(function( data ) {
+   .done(function( json ) {
 
-     console.log(data);
+     console.log(json);
+
+     posts = json.data.children;
+
      /*
-     $.each( data.items, function( i, item ) {
+     $.each( posts, function( i, item ) {
        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
        if ( i === 3 ) {
          return false;
        }
-     });
-     */
+     });*/
+
    });
 
 
 }
 function init()
   {
-    setInterval(function () { playVoice("voice it") }  , 3000);
+    setInterval(function () { readNextPost() }  , 3000);
 
     test();
 
