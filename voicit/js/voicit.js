@@ -9,10 +9,13 @@ function playVoice(string)
 
 function test()
 {
-  var url = "http://reddit.com/r/all.json";
+
+   
+
+  var url = "http://reddit.com/r/all.json?jsonp=?";
  $.getJSON( url, {
-   tags: "mount rainier",
-   tagmode: "any",
+   datatype: "jsonp",
+   crossDomain: true,
    format: "json"
  })
    .done(function( data ) {
