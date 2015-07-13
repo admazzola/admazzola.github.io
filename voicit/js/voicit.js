@@ -12,22 +12,88 @@ function playVoice(string)
 
 }
 
-var postIndex = 0;
-var posts;
 
-function readNextPost()
+
+
+function getPostTimeLength( post )
 {
-  console.log(posts);
-  if(typeof posts[postIndex] !== 'undefined' && posts[postIndex] !== null)
-  {
-    currentPost = posts[postIndex].data;
-    playVoice( currentPost.title );
+  return Math.max(currentPost.title.split(" ").length * 500, 4000 );
+}
 
-    postIndex++;
+var postIndex = 0;
+var interval = 1000;
+function showSlideshow( posts )
+{
+
+  if(typeof posts[postIndex] !== 'undefined' && posts[postIndex] !== null)
+    {
+      currentPost = posts[postIndex].data;
+
+      playVoice(currentPost.title);
+
+
+      imageURL = getImageURLFromPost( currentPost )
+
+      if(imageURL !== null)
+      {
+      addImageToCarousel( imageURL );
+      }else{
+
+      //addTextToCarousel( currentPost.title );
+      }
+
+
+
+
+      $(".owl-carousel").data('owlCarousel').goTo( postIndex );
+      postIndex++;
+
+      //callback to myself
+       setTimeout(function(){ showSlideshow( posts ); }  , getPostTimeLength( currentPost)  );
+  }
+}
+
+
+function getImageURLFromPost( post )
+{
+  if( post.domain == "i.imgur.com")
+  {
+    return post.url;
   }
 
+  if(post.preview !== null)
+  {
+
+    return currentPost.preview.images[0].source.url
+  }
+
+  return null;
 }
-function test()
+
+function addImageToCarousel( imageurl )
+{
+
+
+  imagediv = document.createElement( "div" );
+  imagediv.className = "item";
+
+
+
+    content = document.createElement( "img" );
+    content.src = imageurl;
+
+
+
+
+  imagediv.appendChild( content );
+
+//  $('.owl-carousel').trigger('add.owl.carousel', [imagediv] ).trigger('refresh.owl.carousel');
+  $('#content-carousel').data('owlCarousel').addItem( imagediv );
+
+}
+
+
+function connect()
 {
 
 
@@ -42,7 +108,9 @@ function test()
 
      console.log(json);
 
-     posts = json.data.children;
+     var posts = json.data.children;
+
+     showSlideshow( posts );
 
      /*
      $.each( posts, function( i, item ) {
@@ -56,12 +124,35 @@ function test()
 
 
 }
+
+
+function initCarousel()
+{
+
+
+    $('#content-carousel').owlCarousel({
+
+      singleItem:true,
+     lazyLoad : true,
+     navigation : false
+    });
+
+
+
+}
+
 function init()
   {
-    setInterval(function () { readNextPost() }  , 3000);
+    initCarousel();
 
-    test();
+    connect();
 
   }
 
-  window.onload=init;
+  $(document).ready(function() {
+
+    init();
+
+
+
+  });

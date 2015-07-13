@@ -1,0 +1,15 @@
+#content-carousel .item{
+  display: block;
+  padding: 54px 0px;
+  margin: 5px;
+  color: #FFF;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+}
+#content-carousel .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
