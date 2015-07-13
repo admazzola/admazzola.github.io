@@ -4,7 +4,7 @@
 setInterval( playVoice("hello") , 3000);
 
 
-functions playVoice(string)
+function playVoice(string)
 {
 
 responsiveVoice.speak(“Hello World”);
