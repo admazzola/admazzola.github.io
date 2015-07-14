@@ -39,7 +39,7 @@ function showSlideshow( posts )
       addImageToCarousel( imageURL );
       }else{
 
-      //addTextToCarousel( currentPost.title );
+      addTextToCarousel( currentPost.title );
       }
 
 
@@ -61,7 +61,7 @@ function getImageURLFromPost( post )
     return post.url;
   }
 
-  if(post.preview !== null)
+  if(post.preview !== null && typeof post.preview !== 'undefined')
   {
 
     return currentPost.preview.images[0].source.url
@@ -77,18 +77,30 @@ function addImageToCarousel( imageurl )
   imagediv = document.createElement( "div" );
   imagediv.className = "item";
 
-
-
     content = document.createElement( "img" );
     content.src = imageurl;
 
 
-
-
   imagediv.appendChild( content );
 
-//  $('.owl-carousel').trigger('add.owl.carousel', [imagediv] ).trigger('refresh.owl.carousel');
   $('#content-carousel').data('owlCarousel').addItem( imagediv );
+
+}
+
+function addTextToCarousel( text)
+{
+
+
+    textdiv = document.createElement( "div" );
+    textdiv.className = "item";
+
+      content = document.createElement( "div" );
+      content.innerHTML = text;
+
+
+      textdiv.appendChild( content );
+
+    $('#content-carousel').data('owlCarousel').addItem( textdiv );
 
 }
 
@@ -96,9 +108,19 @@ function addImageToCarousel( imageurl )
 function connect()
 {
 
+  postIndex = 0;
+
+  var sub = getQueryParam("sub");
+
+console.log(sub );
+  if( typeof sub === 'undefined' || sub === null )
+  {
+    sub = "all";
+  }
 
 
-  var url = "http://reddit.com/r/all.json?jsonp=?";
+
+  var url = "http://reddit.com/r/" + sub + ".json?jsonp=?";
  $.getJSON( url, {
    datatype: "jsonp",
    crossDomain: true,
@@ -141,11 +163,32 @@ function initCarousel()
 
 }
 
+function initButtons()
+{
+  $( "#searchButton" ).click(function() {
+      search(  $("#searchField").val()  );
+  });
+
+
+
+}
+
+
+function search( text )
+{
+  setQueryParam("sub", text );
+}
+
 function init()
   {
+
+
     initCarousel();
 
     connect();
+
+    initButtons();
+
 
   }
 
@@ -156,3 +199,34 @@ function init()
 
 
   });
+
+
+
+  //editing params
+
+  function setQueryParam(key, value)
+{
+    key = encodeURI(key); value = encodeURI(value);
+
+    var kvp = document.location.search.substr(1).split('&');
+
+    var i=kvp.length; var x; while(i--)
+    {
+        x = kvp[i].split('=');
+
+        if (x[0]==key)
+        {
+            x[1] = value;
+            kvp[i] = x.join('=');
+            break;
+        }
+    }
+
+    if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+    //this will reload the page, it's likely better to store this until finished
+    document.location.search = kvp.join('&');
+}
+function getQueryParam(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}

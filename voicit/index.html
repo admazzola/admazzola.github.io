@@ -2,25 +2,45 @@
 <html lang="en">
 <head>
   <title>Voicit</title>
+  <link rel="stylesheet" type="text/css" href="css/concise.min.css">
   <link rel="stylesheet" type="text/css" href="css/voicit.css">
   <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
 
 </head>
 
 <body>
-<h2> Voicit </h2>
+  <header class="siteHeader container clearfix">
+    <h1 class="logo">Voicit</h1>
 
+    <nav class="nav">
+      <ul>
+        <li><a href="">Home</a></li>
+        <li>
+            <input type="text" class="form-control" placeholder="Visit..." id="searchField">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" id="searchButton">Go!</button>
+            </span>
+           </li>
+        
+      </ul>
+
+
+    </nav>
+  </header>
+
+  <main class="siteContent container">
 <div class="owl-carousel" id="content-carousel" >
-   
+
 
 </div>
 
 
-
+ </main>
 </body>
 
 
   <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/concise.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
 <script src="js/voicit.js"></script>
 </html>
