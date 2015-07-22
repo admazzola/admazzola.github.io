@@ -17,7 +17,7 @@ function playVoice(string)
 
 function getPostTimeLength( post )
 {
-  return Math.max(currentPost.title.split(" ").length * 500, 4000 );
+  return Math.max(currentPost.title.split(" ").length * 400, 6000 );
 }
 
 var postIndex = 0;
@@ -32,17 +32,34 @@ function showSlideshow( posts )
       playVoice(currentPost.title);
 
 
+      /*
+      <div class="preview-body">
+    </div>
+
+    <div id="contentTitle" class="preview-footer">
+
+      */
+
+      itemdiv = document.createElement( "div" );
+      itemdiv.className = "preview carousel-item-box";
+
       imageURL = getImageURLFromPost( currentPost )
 
       if(imageURL !== null)
       {
-      addImageToCarousel( imageURL );
-      }else{
-
-      addTextToCarousel( currentPost.title );
+        image = generateCarouselImage( imageURL );
+        itemdiv.appendChild(image);
       }
 
+      footer = document.createElement( "div" );
+      footer.className = "preview-footer";
 
+      footer.innerHTML=( currentPost.title  );
+      itemdiv.appendChild(footer);
+
+
+
+      $('#content-carousel').data('owlCarousel').addItem( itemdiv );
 
 
       $(".owl-carousel").data('owlCarousel').goTo( postIndex );
@@ -64,13 +81,20 @@ function getImageURLFromPost( post )
   if(post.preview !== null && typeof post.preview !== 'undefined')
   {
 
-    return currentPost.preview.images[0].source.url
+    return post.preview.images[0].source.url
+  }
+
+  //If we still never found an image, then we have to use the image of the sub icon
+
+  if(post.thumbnail !== null && typeof post.thumbnail !== 'undefined')
+  {
+  return post.thumbnail;
   }
 
   return null;
 }
 
-function addImageToCarousel( imageurl )
+function generateCarouselImage( imageurl )
 {
 
 
@@ -79,11 +103,12 @@ function addImageToCarousel( imageurl )
 
     content = document.createElement( "img" );
     content.src = imageurl;
-
+    content.style.maxHeight = "300px";
+    content.className += " align-center";
 
   imagediv.appendChild( content );
 
-  $('#content-carousel').data('owlCarousel').addItem( imagediv );
+  return imagediv;
 
 }
 
@@ -118,7 +143,7 @@ console.log(sub );
     sub = "all";
   }
 
-
+  $("#subName").html("/r/" + sub);
 
   var url = "http://reddit.com/r/" + sub + ".json?jsonp=?";
  $.getJSON( url, {
