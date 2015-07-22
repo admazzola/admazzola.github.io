@@ -103,7 +103,7 @@ function generateCarouselImage( imageurl )
 
     content = document.createElement( "img" );
     content.src = imageurl;
-    content.style.maxHeight = "300px";
+    content.style.maxWidth = "400px";
     content.className += " align-center";
 
   imagediv.appendChild( content );
@@ -129,7 +129,7 @@ function addTextToCarousel( text)
 
 }
 
-
+var currentPage = 0;
 function connect()
 {
 
@@ -252,6 +252,8 @@ function init()
     //this will reload the page, it's likely better to store this until finished
     document.location.search = kvp.join('&');
 }
+
+
 function getQueryParam(name) {
   return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
 }
