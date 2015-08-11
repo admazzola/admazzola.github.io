@@ -1,5 +1,5 @@
 ---
-thumb: "/assets/favicon-html5.ico"
+thumb: "/assets/multicopter.jpg"
 title: Multiwii PostBuild Guide
 layout: post
 ---

@@ -1,5 +1,5 @@
 ---
-thumb: "/assets/favicon-html5.ico"
+thumb: "/assets/multiwiiconfig.jpg"
 title: Multiwii PreBuild Guide
 layout: post
 ---
