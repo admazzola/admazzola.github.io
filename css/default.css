@@ -1,8 +1,14 @@
 .banner
 {
 	padding:20px;
-	background: #EEEEEE;
-	
+	/*	background: #EEEEEE; */
+
+	 background: url('/assets/congruent_pentagon.png');
+     background-repeat: repeat;
+
+
+		 border-bottom-style: solid;
+    border-width: 2px;
 }
 .brand{
 	color:#34495e;
@@ -11,4 +17,15 @@
 
 .sidenav{
 	padding:10px;
+}
+
+.bio
+{
+	padding:30px;
+  max-width:800px;
+   margin:50px auto;
+
+	 background :#eee;
+	 border-radius:15px;
+
 }

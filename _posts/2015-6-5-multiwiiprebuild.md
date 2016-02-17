@@ -1,6 +1,6 @@
 ---
 thumb: "/assets/multiwiiconfig.jpg"
-title: Multiwii PreBuild Guide
+title: Multiwii Guide
 layout: post
 ---
 

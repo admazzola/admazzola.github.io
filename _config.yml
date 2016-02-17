@@ -1,8 +1,7 @@
-auto: true
-title: Admazzola's Upgraded Github Repo Pages
+title: Admazzola's Software
 # email:
-description: >
-  
+description:
+
 baseurl: ""
 url: "http://admazzola.github.io"
 # twitter_username:
@@ -11,3 +10,4 @@ github_username: admazzola
 # Build settings
 markdown: kramdown
 highlighter: pygments
+ 
