@@ -16,6 +16,7 @@
 
 .parallelogram
 {
+	margin-left:25px;
 	width: 350px;
 	height: 40px;
 	-webkit-transform: skew(-20deg);
@@ -114,4 +115,8 @@
 .thumbnail
 {
 	border: 1px solid  ;
+}
+
+.pad-5{
+	padding:5px;
 }
