@@ -1,0 +1,58 @@
+.banner
+{
+  margin-top:70px;
+  margin-bottom:70px;
+
+  .brand-logo
+  {
+
+    display: inline-block;
+
+    img
+    {
+      float:left ;
+
+    }
+    a
+    {
+      color: #111;
+    }
+
+    font-size:22px;
+
+    span
+    {
+
+      margin-top: 20px;
+      display: inline-block;
+    }
+  }
+
+
+
+  .banner-nav
+  {
+    float:right;
+    display: inline-block;
+
+    a
+    {
+      color: #111;
+    }
+
+
+    ul
+    {
+      list-style-type: none;
+    }
+
+    li
+    {
+      float:left;
+      padding: 20px 10px;
+      margin: 0px 10px;
+    }
+
+
+  }
+}
