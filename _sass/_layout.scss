@@ -193,14 +193,15 @@
 
 .post-link {
     display: block;
-    font-size: 24px;
+    font-size: 32px;
     color: black;
 
 
     p
     {
-
-
+      white-space: nowrap;
+       overflow: hidden;
+       text-overflow: ellipsis;
     }
 
 
