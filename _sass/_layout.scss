@@ -194,6 +194,27 @@
 .post-link {
     display: block;
     font-size: 24px;
+    color: black;
+
+
+    p
+    {
+
+
+    }
+
+
+    p:hover
+    {
+      text-decoration: none;
+      background-color: #1abc9c;
+      color: white;
+      border-radius: 3px;
+    }
+}
+
+.post-link:hover {
+  text-decoration: none;
 }
 
 
@@ -210,9 +231,16 @@
     letter-spacing: -1px;
     line-height: 1;
 
+
     @include media-query($on-laptop) {
         font-size: 36px;
     }
+}
+
+
+.post-meta
+{
+  display:none;
 }
 
 .post-content {
@@ -267,4 +295,11 @@
       margin:70px 10px 0 0;
 
     }
+}
+
+
+.btn-container-mazz
+{
+  text-align:center;
+  margin:20px;
 }
