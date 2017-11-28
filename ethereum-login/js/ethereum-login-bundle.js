@@ -6608,7 +6608,9 @@ function checkLoginSignature(_signature_response_hex,_challenge_digest_hash,ethU
   var vrs_data = ethUtil.fromRpcSig(_signature_response_hex)
 
 
-  //message is incorrect length
+  //accept the challenge digest from the metamask response and recover the public address from it
+  // we will also do this server side.  by doing this we KNOW that in order to produce that metamask response, the user must have used the private key associated with that public address
+
   var public_key_from_sig = ethUtil.ecrecover(_challenge_digest_hash,vrs_data.v,vrs_data.r,vrs_data.s)
   var public_key_from_sig_hex = public_key_from_sig.toString('hex')
   console.log( public_key_from_sig_hex );
@@ -6617,7 +6619,9 @@ function checkLoginSignature(_signature_response_hex,_challenge_digest_hash,ethU
 
   var address_at_pub_key = ethUtil.publicToAddress(public_key_from_sig);
   var public_address_from_sig_hex = address_at_pub_key.toString('hex');
-  console.log( public_address_from_sig_hex );
+
+  console.log( 'Clients public address recovered from response:'  );
+  console.log( address_at_pub_key );
 
     console.log( public_address_from_sig_hex );
 
