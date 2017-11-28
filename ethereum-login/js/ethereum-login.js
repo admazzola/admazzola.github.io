@@ -19,21 +19,24 @@ if (typeof web3 !== 'undefined') {
       window.web3 = new Web3(web3.currentProvider);
 
 
+      requirejs(["ethereumjs-util"], function(ethUtil) {
 
 
 
-      jQuery(".eth-btn").on('click', function(event) {
+              jQuery(".eth-btn").on('click', function(event) {
 
-          renderHelp("Starting personal sign... ")
+                  renderHelp("Starting personal sign... ")
 
-          handlePersonalSignButtonClick(web3,function(response){
-              renderHelp("PERSONAL SIGN WORKED ")
+                  handlePersonalSignButtonClick(web3,ethUtil,function(response){
+                      renderHelp("PERSONAL SIGN WORKED ")
 
-          })
+                  })
 
-          //send the expected public key, challenge, and signature to the server via Ajax to sign in
+                  //send the expected public key, challenge, and signature to the server via Ajax to sign in
 
-       });
+               });
+
+         });
 
 
   } else {
@@ -49,7 +52,7 @@ if (typeof web3 !== 'undefined') {
 });
 
 
-function handlePersonalSignButtonClick(web3,callback)
+function handlePersonalSignButtonClick(web3,ethUtil,callback)
 {
 
   event.preventDefault();
@@ -75,14 +78,18 @@ function handlePersonalSignButtonClick(web3,callback)
          if (err) return console.error(err)
          console.log('PERSONAL SIGNED:' + result)
 
-          var success = checkLoginSignature(result,msg_hash)
+        checkLoginSignature(result,msg_hash,ethUtil,function(response){
 
-          if(success)
-          {
-          callback('success');
-          }else {
-            console.log(err)
-          }
+            if(response == 'success')
+            {
+            callback('success');
+            }else {
+              console.log(err)
+            }
+
+          })
+
+
 
        });
       }
@@ -92,7 +99,7 @@ function handlePersonalSignButtonClick(web3,callback)
 
 
 
-function checkLoginSignature(_signature_response_hex,_challenge_digest_hash,callback)
+function checkLoginSignature(_signature_response_hex,_challenge_digest_hash,ethUtil,callback)
 {
 
   if(typeof _challenge_digest_hash != 'buffer')
