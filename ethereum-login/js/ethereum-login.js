@@ -154,15 +154,13 @@ function checkLoginSignature(_signature_response_hex,_challenge_digest_hash,ethU
        signature_s: vrs_data_integer.s,
 
      },
-   }).success(function(result) {
-      console.log(result)
+     success: function (result) {
+       console.log(result)
 
-      console.log("authed in properly ");
-          callback('success')
-    }).done(function() {
-      console.log("completed ");
-
-    });
+       console.log("authed in properly ");
+           callback('success')
+     }
+   }) 
 
 
 
