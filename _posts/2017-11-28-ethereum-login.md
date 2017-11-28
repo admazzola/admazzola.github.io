@@ -10,6 +10,9 @@ Allow users to authenticate themselves to your websites and apps without relying
 
 [View the codepen for these buttons](https://codepen.io/admazzola/pen/LOgpOV).
 
+[View the sample implementation]({{ site.url }}/ethereum-login/index.html)
+
+ 
 
 Those users will need to use a plugin such as Metamask or a browser such as Mist in order to authenticate themselves in this way.  However, there are many advantages including:
 
