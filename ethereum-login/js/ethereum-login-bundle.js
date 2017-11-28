@@ -6651,8 +6651,12 @@ function checkLoginSignature(_signature_response_hex,_challenge_digest_hash,ethU
 
        console.log("authed in properly ");
            callback('success')
+     },
+     done: function (result) {
+       console.log("authed in properly clientside, please implement server side check ");
+       callback('success')
      }
-   }) 
+   })
 
 
 
