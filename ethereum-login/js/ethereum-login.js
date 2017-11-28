@@ -22,7 +22,7 @@ if (typeof web3 !== 'undefined') {
 
 
 
-      jQuery(".eth-button").on('click', function(event) {
+      jQuery(".eth-btn").on('click', function(event) {
 
           renderHelp("Starting personal sign... ")
 
