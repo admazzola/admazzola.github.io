@@ -6,11 +6,9 @@ layout: post
 
 Allow users to authenticate themselves to your websites and apps without relying on a centralized corporation such as Google, Twitter or Facebook.  Instead, users can use an Ethereum account that they control.   [view project page](https://github.com/admazzola/ethereum-login).
 
-![Metamask Login Image]({{ site.url }}/assets/sample_metamask_login.png)
+![Ethereum Login Image]({{ site.url }}/assets/ethereumlogin.jpg)
 
-
-Codepen for buttons:
-https://codepen.io/admazzola/pen/LOgpOV
+[View the codepen for these buttons](https://codepen.io/admazzola/pen/LOgpOV).
 
 
 Those users will need to use a plugin such as Metamask or a browser such as Mist in order to authenticate themselves in this way.  However, there are many advantages including:
