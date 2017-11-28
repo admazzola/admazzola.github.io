@@ -20,8 +20,7 @@ if (typeof web3 !== 'undefined') {
 
 
       requirejs(["ethereumjs-util"], function(ethUtil) {
-
-
+ 
 
               jQuery(".eth-btn").on('click', function(event) {
 
