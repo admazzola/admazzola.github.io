@@ -1,4 +1,12 @@
+/*
+without nodejs build me with:
+browserify ethereum-login.js -o ethereum-login-bundle.js
 
+
+*/
+
+
+var ethUtil =  require('ethereumjs-util');
 
 function renderError(message)
 {
@@ -19,9 +27,6 @@ if (typeof web3 !== 'undefined') {
       window.web3 = new Web3(web3.currentProvider);
 
 
-      requirejs(["ethereumjs-util-bundle"], function(ethUtil) {
-
-
 
               jQuery(".eth-btn").on('click', function(event) {
 
@@ -35,8 +40,6 @@ if (typeof web3 !== 'undefined') {
                   //send the expected public key, challenge, and signature to the server via Ajax to sign in
 
                });
-
-         });
 
 
   } else {
