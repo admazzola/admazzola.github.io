@@ -15,8 +15,7 @@ Allow users to authenticate themselves to your websites and apps without relying
  
 
 Those users will need to use a plugin such as Metamask or a browser such as Mist in order to authenticate themselves in this way.  However, there are many advantages including:
-
-* Accept payments easily via the Ethereum network
+ 
 * No need to locally store user passwords, only sessions
 * No need to include 'reset password' functions
 * No need to store API keys for Oauth services
