@@ -19,8 +19,9 @@ if (typeof web3 !== 'undefined') {
       window.web3 = new Web3(web3.currentProvider);
 
 
-      requirejs(["ethereumjs-util"], function(ethUtil) {
- 
+      requirejs(["ethereumjs-util-bundle"], function(ethUtil) {
+
+
 
               jQuery(".eth-btn").on('click', function(event) {
 
